@@ -1,0 +1,22 @@
+.display-area {
+  border-radius: 30px;
+  border: 2px solid #4caf50;
+  min-width: 300px;
+  max-width: 500px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+.display-area-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.tree-view-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-start;
+}

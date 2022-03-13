@@ -1,0 +1,31 @@
+<ul class="tree-view">
+  <li *ngFor="let item of treeItems">
+    <div class="node-wrapper">
+      <div class="node" *ngIf="[NodeTypes.File, NodeTypes.Folder].includes(item.type)"
+        [ngClass]="{'node-unset': !item.isNamed}">
+        <img class="icon" [src]="item.type === NodeTypes.File ? fileIcon : folderIcon" />
+        <div *ngIf="item.isNamed; else isUnnamed">
+          <span>{{ item.name }}</span>
+          <button *ngIf="item.type === NodeTypes.Folder" class="iconButton" (click)="addChildNode(item)"
+            [ngStyle]="{ 'background-image': 'url(' + plusIcon + ')'}"></button>
+          <button class="iconButton" (click)="removeNode(item)"
+            [ngStyle]="{ 'background-image': 'url(' + trashIcon + ')'}"></button>
+        </div>
+        <ng-template #isUnnamed>
+          <input type="text" [(ngModel)]="item.name" />
+          <button [disabled]="!item.name" class="iconButton" (click)="saveNode(item)"
+            [ngStyle]="{ 'background-image': 'url(' + checkIcon + ')'}"></button>
+          <button class="iconButton" (click)="removeNode(item)"
+            [ngStyle]="{ 'background-image': 'url(' + crossIcon + ')'}"></button>
+        </ng-template>
+      </div>
+      <div class="node" *ngIf="item.type === NodeTypes.Unset">
+        <button (click)="setNodeType(item, NodeTypes.File)">File</button>
+        <button (click)="setNodeType(item, NodeTypes.Folder)">Folder</button>
+      </div>
+      <ul *ngIf="item.children">
+        <app-tree-view [treeItems]="item.children"></app-tree-view>
+      </ul>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,79 @@
+.node-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  max-height: 30px;
+  max-width: max-content;
+  gap: 0.4rem;
+  padding: 0.1rem;
+}
+
+.node-unset {
+  padding: 1rem;
+}
+
+.node>div>button {
+  display: none;
+}
+
+.node:hover>div>button {
+  display: block;
+}
+
+.node div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+
+.node:hover {
+  border: 1px solid black;
+}
+
+.tree-view {
+  list-style-type: none;
+}
+
+ul.tree-view,
+ul.tree-view ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.tree-view ul {
+  margin-left: 10px;
+}
+
+ul.tree-view li {
+  margin: 0;
+  padding: 0 7px;
+  line-height: 20px;
+  border-left: 1px dashed rgb(100, 100, 100);
+  display: flex;
+}
+
+ul.tree-view li:before {
+  position: relative;
+  height: 1em;
+  width: 12px;
+  color: white;
+  border-bottom: 1px dashed rgb(100, 100, 100);
+  content: "";
+  display: inline-block;
+  left: -7px;
+}
+
+ul.tree-view li:last-child {
+  border-left: none;
+}
+
+ul.tree-view li:last-child:before {
+  border-left: 1px dashed rgb(100, 100, 100);
+}
